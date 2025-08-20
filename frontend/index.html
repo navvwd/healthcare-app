@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Healthcare Prediction System</title>
+  <link rel="stylesheet" href="./style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="app">
+    <header class="hero">
+      <h1>Healthcare Prediction System</h1>
+      <p>Enter patient metrics to predict Anemia or Heart Disease in seconds.</p>
+    </header>
+
+    <!-- Anemia Card -->
+    <section class="card">
+      <div class="card-head">
+        <h2>🩸 Anemia Prediction</h2>
+        <div class="badge">Model v1</div>
+      </div>
+
+      <form id="anemiaForm" class="grid">
+        <input name="Age" type="number" step="1" placeholder="Age" required />
+        <input name="Hemoglobin" type="number" step="0.1" placeholder="Hemoglobin" required />
+        <input name="MCV" type="number" step="0.1" placeholder="MCV" required />
+        <input name="MCH" type="number" step="0.1" placeholder="MCH" required />
+        <input name="MCHC" type="number" step="0.1" placeholder="MCHC" required />
+
+        <div class="actions">
+          <button id="anemiaBtn" class="btn">Predict</button>
+          <button type="reset" class="btn btn-ghost">Clear</button>
+        </div>
+      </form>
+
+      <div id="anemiaResult" class="result"></div>
+    </section>
+
+    <!-- Heart Card -->
+    <section class="card">
+      <div class="card-head">
+        <h2>❤️ Heart Disease Prediction</h2>
+        <div class="badge">Model v1</div>
+      </div>
+
+      <form id="heartForm" class="grid grid-2">
+        <input name="age" type="number" step="1" placeholder="Age" required />
+        <input name="sex" type="number" step="1" placeholder="Sex (0=F, 1=M)" required />
+        <input name="cp" type="number" step="1" placeholder="CP (0–3)" required />
+        <input name="trestbps" type="number" step="1" placeholder="Trestbps" required />
+        <input name="chol" type="number" step="1" placeholder="Chol" required />
+        <input name="fbs" type="number" step="1" placeholder="FBS (0/1)" required />
+        <input name="restecg" type="number" step="1" placeholder="Restecg (0–2)" required />
+        <input name="thalach" type="number" step="1" placeholder="Thalach" required />
+        <input name="exang" type="number" step="1" placeholder="Exang (0/1)" required />
+        <input name="oldpeak" type="number" step="0.1" placeholder="Oldpeak" required />
+        <input name="slope" type="number" step="1" placeholder="Slope (0–2)" required />
+        <input name="ca" type="number" step="1" placeholder="CA (0–3)" required />
+        <input name="thal" type="number" step="1" placeholder="Thal (0/1/2/3/6/7*)" required />
+
+        <div class="actions">
+          <button id="heartBtn" class="btn">Predict</button>
+          <button type="reset" class="btn btn-ghost">Clear</button>
+        </div>
+      </form>
+
+      <div id="heartResult" class="result"></div>
+      <p class="muted">*Thal encoding depends on your dataset (e.g., 3=normal, 6=fixed, 7=reversible).</p>
+    </section>
+
+    <footer class="footer">
+      <span id="apiStatus" class="status-dot offline"></span>
+      <span>Backend: <code id="backendUrl">http://127.0.0.1:8000</code></span>
+    </footer>
+  </div>
+
+  <div id="toast"></div>
+  <script src="./app.js"></script>
+</body>
+</html>
