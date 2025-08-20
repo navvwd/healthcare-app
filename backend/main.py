@@ -5,12 +5,13 @@ from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 
+# --- FastAPI App ---
 app = FastAPI(title="Healthcare Prediction API")
 
 # --- CORS (allow frontend) ---
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],  # tighten later to your frontend origin
+    allow_origins=["*"],  # later you can replace "*" with your frontend URL for security
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
@@ -68,8 +69,10 @@ def prepare_features_from_payload(bundle, payload_dict: dict):
         else:
             row.append(float(v))
     if missing:
-        raise HTTPException(status_code=400, detail=f"Missing features: {missing}. "
-                                                   f"Your model expects: {features}")
+        raise HTTPException(
+            status_code=400,
+            detail=f"Missing features: {missing}. Your model expects: {features}"
+        )
     return np.array([row])
 
 @app.post("/predict/anemia")
