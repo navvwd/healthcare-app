@@ -1,5 +1,5 @@
 // adjust if your backend runs elsewhere
-const BASE_URL = "http://127.0.0.1:8000";
+const BASE_URL = "https://healthcare-app-ru0p.onrender.com";
 document.getElementById("backendUrl").textContent = BASE_URL;
 
 const anemiaFields = ["Age", "Hemoglobin", "MCV", "MCH", "MCHC"];
